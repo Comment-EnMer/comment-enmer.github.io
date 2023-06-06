@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous">
+    <!-- Datatables css -->
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet"
+      href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+    <!-- Custom styles -->
+    <link href="css/more.css" rel="stylesheet">
+    <title>En mer Prototype</title>
+  </head>
+  <body>
+
+    <div class="backToTop" onclick="topFunction()" id="myBtn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+      </svg>
+    </div>
+    
+    <header>
+      <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-md-7 py-4">
+              <h4 class="text-white">How to cite</h4>
+              <p class="text-muted">Elena Spadini (ed.), <i>Bernard Comment, "En mer". A scholarly edition prototype</i>, 2023. DOI: </p>
+            </div>
+            <div class="col-sm-4 offset-md-1 py-4" style="font-size: small;">
+              <h4 class="text-white">Contact</h4>
+              <ul class="list-unstyled">
+                <li><a href="#" class="text-white">elena.spadini@unibas.ch</a></li>
+              </ul>
+              <h4 class="text-white">Data</h4>
+              <ul class="list-unstyled">
+                <li class="text-white"><a href="#" class="text-white">Github</a> | <a href="#" class="text-white">Zenodo</a>
+                  <br/>
+                  Documents from the <a href="https://www.nb.admin.ch/snl/en/home/about-us/sla.html">Swiss Literary Archives</a>.</li>
+              </ul>
+              <h4 class="text-white">Licence</h4>
+              <ul class="list-unstyled text-white">
+                <li>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-c-circle" viewBox="0 0 16 16">
+                    <path d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8Zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM8.146 4.992c-1.212 0-1.927.92-1.927 2.502v1.06c0 1.571.703 2.462 1.927 2.462.979 0 1.641-.586 1.729-1.418h1.295v.093c-.1 1.448-1.354 2.467-3.03 2.467-2.091 0-3.269-1.336-3.269-3.603V7.482c0-2.261 1.201-3.638 3.27-3.638 1.681 0 2.935 1.054 3.029 2.572v.088H9.875c-.088-.879-.768-1.512-1.729-1.512Z"/>
+                  </svg> (All rights reserved) Bernard Comment: texts and facsimiles. 
+                  <br/>
+                  <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a> Elena Spadini: introduction and witnesses description.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="container d-flex justify-content-between">
+          <a href="index.html" class="navbar-brand d-flex align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+              class="bi bi-water" viewBox="0 0 16 16">
+              <path
+                d="M.036 3.314a.5.5 0 0 1 .65-.278l1.757.703a1.5 1.5 0 0 0 1.114 0l1.014-.406a2.5 2.5 0 0 1 1.857 0l1.015.406a1.5 1.5 0 0 0 1.114 0l1.014-.406a2.5 2.5 0 0 1 1.857 0l1.015.406a1.5 1.5 0 0 0 1.114 0l1.757-.703a.5.5 0 1 1 .372.928l-1.758.703a2.5 2.5 0 0 1-1.857 0l-1.014-.406a1.5 1.5 0 0 0-1.114 0l-1.015.406a2.5 2.5 0 0 1-1.857 0l-1.014-.406a1.5 1.5 0 0 0-1.114 0l-1.015.406a2.5 2.5 0 0 1-1.857 0L.314 3.964a.5.5 0 0 1-.278-.65zm0 3a.5.5 0 0 1 .65-.278l1.757.703a1.5 1.5 0 0 0 1.114 0l1.014-.406a2.5 2.5 0 0 1 1.857 0l1.015.406a1.5 1.5 0 0 0 1.114 0l1.014-.406a2.5 2.5 0 0 1 1.857 0l1.015.406a1.5 1.5 0 0 0 1.114 0l1.757-.703a.5.5 0 1 1 .372.928l-1.758.703a2.5 2.5 0 0 1-1.857 0l-1.014-.406a1.5 1.5 0 0 0-1.114 0l-1.015.406a2.5 2.5 0 0 1-1.857 0l-1.014-.406a1.5 1.5 0 0 0-1.114 0l-1.015.406a2.5 2.5 0 0 1-1.857 0L.314 6.964a.5.5 0 0 1-.278-.65zm0 3a.5.5 0 0 1 .65-.278l1.757.703a1.5 1.5 0 0 0 1.114 0l1.014-.406a2.5 2.5 0 0 1 1.857 0l1.015.406a1.5 1.5 0 0 0 1.114 0l1.014-.406a2.5 2.5 0 0 1 1.857 0l1.015.406a1.5 1.5 0 0 0 1.114 0l1.757-.703a.5.5 0 1 1 .372.928l-1.758.703a2.5 2.5 0 0 1-1.857 0l-1.014-.406a1.5 1.5 0 0 0-1.114 0l-1.015.406a2.5 2.5 0 0 1-1.857 0l-1.014-.406a1.5 1.5 0 0 0-1.114 0l-1.015.406a2.5 2.5 0 0 1-1.857 0L.314 9.964a.5.5 0 0 1-.278-.65zm0 3a.5.5 0 0 1 .65-.278l1.757.703a1.5 1.5 0 0 0 1.114 0l1.014-.406a2.5 2.5 0 0 1 1.857 0l1.015.406a1.5 1.5 0 0 0 1.114 0l1.014-.406a2.5 2.5 0 0 1 1.857 0l1.015.406a1.5 1.5 0 0 0 1.114 0l1.757-.703a.5.5 0 1 1 .372.928l-1.758.703a2.5 2.5 0 0 1-1.857 0l-1.014-.406a1.5 1.5 0 0 0-1.114 0l-1.015.406a2.5 2.5 0 0 1-1.857 0l-1.014-.406a1.5 1.5 0 0 0-1.114 0l-1.015.406a2.5 2.5 0 0 1-1.857 0l-1.757-.703a.5.5 0 0 1-.278-.65z"
+              />
+            </svg>
+            <strong>&nbsp;&nbsp;En mer</strong>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+    <main>
+      <!--d9f2b2-->
+      <section style="margin-bottom: 0px;background-color: #dae5d0;" class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading">Bernard Comment, “En mer”</h1>
+          <p class="lead text-muted">A scholarly edition prototype, including <span
+              style="font-weight: bold;">born-digital</span> and <span style="font-weight: bold;"
+              >paper</span> genetic materials</p>
+        </div>
+      </section>
+      <section>
+        <div class="container">
+          
+          <div class="row pt-5 px-5"> <!-- row for title and intro -->
+            <div class="col-md-auto">
+              <h1 class="internal-h1">Transcriptions</h1>
+              <p>Samples of the text from various genetic witnesses have been transcribed here. The samples have been chosen at different moments of the story: the beginning, two internal passages and the end. The selection has been made for this prototype and would not be enough for an exhaustive study of the genesis of "En mer".</p>
+            </div>
+          </div>
+
+          <div class="row pt-5 justify-content-md-center"> <!-- row for TOC -->
+            <div class="col-md-auto">
+              <h2>Table of contents</h2>
+              <ul style="list-style: none;">
+                <li>Genetic witnesses of <i>Tout passe</i> (2011)
+                  <ul>
+                    <li>
+                      <a href="#A-3-e-16_transcr">Transcription of A-3-e-16</a>
+                    </li>
+                    <li>
+                      <a href="#A-3-e-18_transcr">Transcription of A-3-e-18</a>
+                    </li>
+                    <li>
+                      <a href="#">Transcription of A-3-e-20</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>              
+            </div>
+          </div> <!-- end TOC row -->
+          
+          <div class="row pt-5 px-5" id="A-3-e-16_transcr">
+            <!-- title -->
+            <h2>Transcription of A-3-e-16 (genetic witness of <i>Tout passe</i>, 2011)</h2>
+            <!-- link to wit -->
+            <p>To the <a href="witnesses.html#toutPasse">witness description 
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
+                <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
+              </svg></a>
+            </p>
+            <!-- facs -->
+            <div class="col-md-5 py-5">
+              <a href="images/A-3-e-16_facs/p108.jpg" target="_blank">
+                <img src="images/A-3-e-16_facs/p108.jpg" class="img-fluid img-thumbnail thumb" alt="A-3-e-16 facsimile">
+              </a>
+              <a href="images/A-3-e-16_facs/p112.jpg" target="_blank">
+                <img src="images/A-3-e-16_facs/p112.jpg" class="img-fluid img-thumbnail thumb" alt="A-3-e-16 facsimile">
+              </a>
+              <a href="images/A-3-e-16_facs/p113.jpg" target="_blank">
+                <img src="images/A-3-e-16_facs/p113.jpg" class="img-fluid img-thumbnail thumb" alt="A-3-e-16 facsimile">
+              </a>
+              <a href="images/A-3-e-16_facs/p125.jpg" target="_blank">
+                <img src="images/A-3-e-16_facs/p125.jpg" class="img-fluid img-thumbnail thumb" alt="A-3-e-16 facsimile">
+              </a>
+              <a href="images/A-3-e-16_facs/p129.jpg" target="_blank">
+                <img src="images/A-3-e-16_facs/p129.jpg" class="img-fluid img-thumbnail thumb" alt="A-3-e-16 facsimile">
+              </a>
+              <a href="images/A-3-e-16_facs/p130.jpg" target="_blank">
+                <img src="images/A-3-e-16_facs/p130.jpg" class="img-fluid img-thumbnail thumb" alt="A-3-e-16 facsimile">
+              </a>
+            </div>
+            <!-- transcr -->
+            <div class="col-md-7">
+              <div class="tei">
+                <div class="tei-head">En mer</div>
+                <div class="tei-sample">
+                   <div class="tei-sample-name">[Passage 1, p. 108]</div>
+                   <div class="tei-epigraph">
+                      <div class="tei-quote">Regardez-moi ces autres, j'entends ceux de la terre, parce que nous on
+                         est de l'eau, et ça fait une grande différence</div>
+                      <div class="tei-quote-source">C. F. Ramuz, La beauté sur la terre</div>
+                   </div>
+                   <p class="tei-p">
+                      <span class="tei-del">
+                         <span class="tei-said">- Tu m'en veux?</span>
+                         <span class="tei-said">- Non.</span>
+                         <span class="tei-said">- Mais tu avais espéré que je t'accompagnerais?</span>
+                         <span class="tei-said">- Oui.</span>
+                         </span>
+                      </p>
+                   <p class="tei-p">De loin, je n'avais pas d'abord vu que la tache rouge 
+                      <span class="tei-del">de son</span>
+                      <span class="tei-add">d'un</span>
+                       coupe-vent de nylon. 
+                      <span class="tei-del">Elle était</span>
+                      <span class="tei-add">Une silhouette</span>
+                       assise sur la banquette arrière de la petite vedette de 
+                      <span class="tei-del">Paolo</span>
+                      <span class="tei-add">Raoul</span>
+                      . Ensuite, j'ai mieux distingué la chevelure, longe et noire.
+                      <span class="tei-del">Louise portait une coupe garçonne, à l'époque, presque
+                         en brosse, mais tout cela a bien sûr eu le tempds de pousser, en dix ans.</span>
+                      C'est quand elle est parvenue sur le pont, après une
+                      escalade maladroite de l'échelle, que je l'ai vraiment reconnue.
+                      <span class="tei-add">Louise portait une coupe garçonne, à l'époque, presque
+                         en brosse, mais tout cela a bien sûr eu le tempds de pousser, en dix ans.</span>                  
+                      
+                      
+                      <span class="tei-del">La</span>
+                      <span class="tei-add">Elle a gardé la</span>
+                       même sveltesse <span class="tei-del">qu'autrefois</span>, et <span class="tei-del">presque</span> une
+                      <span class="tei-add">sort de</span> maigreur sur le visage, très pâle autour de ses yeux verts à
+                      facettes, comme deux émeraudes piquées de soufre. <span class="tei-del">Je m'attendais si peu à la
+                         voir.</span> Il ne vient jamais de visite, ici, en-dehors de 
+                      <span class="tei-del">Paolo</span>
+                      <span class="tei-add">Raoul</span>
+                       chaque mercredi vers onze heures, mais il ne s'attarde pas, et une fois sur deux
+                      il oublie les livres que je lui ai demandés, ou il
+                      prétend qu'ils ne sont pas arrivés.<span class="tei-gap"> [...] </span></p>
+                </div>
+                <div class="tei-sample">
+                   <div class="tei-sample-name">[Passage 2, p. _113]</div>
+                   <p class="tei-p">Louise <span class="tei-del">s'est installée dans un des fauteils du « salon ». L'inclinaison du
+                         sol la perturbait, j'a même cru qu'elle allait se sentir mal. Tandis que sur ce
+                         siège redressé par des cales sous les deux pieds de gauche, elle retrouve son
+                         aise, et presque le sourire. Elle</span> aurait voulu que j'aère un peu. Ça
+                      sentait le renfermé. On respirait mal. Mais j'ai tout de suite prévenu son geste.
+                      À cause de la mouche. Enfin, je ne lui ai pas parlé de la mouche, elle <span class="tei-del">
+                         n'aurait pas copris, ou</span> se serait moquée de moi. 
+                      <span class="tei-del">D'ailleurs, il fait très froid dehors, et</span>
+                      <span class="tei-add">Ici</span>
+                       le vent souffle fort, surtout en soirée.</p>
+                </div>
+                <div class="tei-sample">
+                   <div class="tei-sample-name">[Passage 3, p. 125]</div>
+                   <p class="tei-p">
+                      <span class="tei-said">- Est-ce que tu <span class="tei-del">les</span> as abandonné<span class="tei-del">s</span>... juste après mon
+                         départ?</span>
+                      <span class="tei-said">- Je n
+                         <span class="tei-del">e les</span>
+                         <span class="tei-add">'</span>
+                          ai pas abandonné<span class="tei-del">s</span>, Léo. On m'a chassée. Expulsée de chez
+                         moi, du jour au lendemain. Il était bien placé pour tout comprendre. 
+                         <span class="tei-del">L'immaculée conception! Je crois que p</span>
+                         <span class="tei-add">P</span>
+                         endant toutes ces années, il ne s'était douté de rien. Il me prenait
+                         pour une femme étrange, un peu folle peut-être, mais il s'en était fait une
+                         raison. Il me tolérait. Tout le monde me tolérait. Sa famille, ses enfant.
+                         <i>Nos</i> enfants. 
+                         <span class="tei-del">J'étais encore plus étrangère que toi, dans ce pays. C'est pas
+                            seulement une affaire de passeport.</span>
+                         <span class="tei-add">Mais là, c'était trop pour lui. Il ne pouvait pas avaler l'affront. Il
+                            n'a vu que ça, l'affront.</span>
+                         </span>
+                      </p>
+                   <p class="tei-p">
+                      <span class="tei-del">C'est à moi qu'elle dit ça... Si j'en avais eu un, de passeport, j'aurais
+                         au moins pu toucher une rente invalidité. Mais elle retrouve tout à coup le
+                         sourire, presque désinvolte.</span>
+                      <span class="tei-add">Elle se lève, ouvre des tiroirs, remue les affaires sur la table,
+                         s'accroche à un meuble, elle voudrait une cigarette, elle a
+                         tellement envie de fumer, je luis dis qu'elle ne trouvera rien, elle ferait mieux
+                         de penser à autre chose.
+                         Elle me fixe du regard, elle hausse les sourcils, et se gratte la joue droite, avec
+                         l'index, elle se ronge toujours autant les ongles, jusqu'au sang.</span>
+                      </p>
+                </div>
+                <div class="tei-sample">
+                   <div class="tei-sample-name">[Passage 4, p. 130]</div>
+                   <p class="tei-p"><span class="tei-gap"> [...] </span>La direction n'y trouvera<span class="tei-del">it</span> rien à
+                      redire. <span class="tei-del">Chaque être humain a droit à un peu de compagnie, et pendant toutes
+                         ces années, je n'avais pas coûté cher. Toujours cet esprit pratique qui ne le
+                         quitte pas.</span> J'apporterai des doubles portions, qu'il a encore crié depuis
+                      sont petit bateau, avec un grand sourire.</p>
+                   <p class="tei-p">
+                      <span class="tei-del">Doubles portions, c'est peut-être beaucoup. Elle mange tellement
+                         peu.</span>
+                      <span class="tei-add">Je lui ai fait de grands signes amicaux avec les bras, en me disant que je
+                         donnerais le surplus aux poissons. Je n'ai jamais aimé avoir des armoires
+                         qui se remplissent trop. C'est encore un fil à <span class="tei-unclear">xx
+                            xxxxx</span></span>
+                      </p>
+                </div>
+             </div> <!-- end tei -->
+            </div> <!-- end col transcr -->
+            
+          </div> <!-- end row A-3-e-16 -->
+
+
+
+
+          <div class="row pt-5 px-5" id="A-3-e-18_transcr">
+            <!-- title -->
+            <h2>Transcription of A-3-e-18 (genetic witness of <i>Tout passe</i>, 2011)</h2>
+            <!-- link to wit -->
+            <p>To the <a href="witnesses.html#toutPasse">witness description 
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
+                <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
+              </svg></a>
+            </p>
+            <!-- facs -->
+            <div class="col-md-5 py-5">
+              <a href="images/A-3-e-18_facs/p91.jpg" target="_blank">
+                <img src="images/A-3-e-18_facs/p91.jpg" class="img-fluid img-thumbnail thumb" alt="A-3-e-18 facsimile">
+              </a>
+              <a href="images/A-3-e-18_facs/p94.jpg" target="_blank">
+                <img src="images/A-3-e-18_facs/p94.jpg" class="img-fluid img-thumbnail thumb" alt="A-3-e-18 facsimile">
+              </a>
+              <a href="images/A-3-e-18_facs/p103.jpg" target="_blank">
+                <img src="images/A-3-e-18_facs/p103.jpg" class="img-fluid img-thumbnail thumb" alt="A-3-e-18 facsimile">
+              </a>
+              <a href="images/A-3-e-18_facs/p107.jpg" target="_blank">
+                <img src="images/A-3-e-18_facs/p107.jpg" class="img-fluid img-thumbnail thumb" alt="A-3-e-18 facsimile">
+              </a>
+            </div>
+            <!-- transcr -->
+            <div class="col-md-7">
+              <div class="tei">
+                <div class="tei-head">En mer</div>
+                <div class="tei-sample">
+                   <div class="tei-sample-name">[Passage 1, p. 91]</div>
+                   <div class="tei-epigraph">
+                      <div class="tei-quote">Regardez-moi ces autres, j'entends ceux de la terre, parce que nous
+                         on est de l'eau, et ça fait une grande différence</div>
+                      <div class="tei-quote-source">C. F. Ramuz, La beauté sur la terre</div>
+                   </div>
+                   <p class="tei-p">De loin, je n'avais pas d'abord vu que la tache rouge d'un coupe-vent de nylon. Une
+                      silhouette, assise sur la banquette arrière de la petite vedette de Raoul. Ensuite,
+                      j'ai mieux distingué la chevelure, longe et <span class="tei-del">noire</span><span class="tei-add">blonde</span>. C'est quand elle est parvenue sur le pont, après une escalade maladroite de l'échelle,
+                      que je l'ai vraiment reconnue. Louise portait une coupe garçonne, à l'époque, presque
+                      en brosse, mais tout cela a bien sûr eu le tempds de pousser, en près de sept ans.
+                      Elle a gardé la même sveltesse, et une sort de maigreur sur le visage, très pâle autour
+                      de ses yeux verts à
+                      facettes, comme deux émeraudes piquées de soufre. Il ne vient jamais de visite, ici,
+                      en-dehors de Raoul qui m'apporte le ravitaillement, chaque mercredi vers onze heures,
+                      <span class="tei-del">mais</span> il ne s'attarde pas, <span class="tei-del">et</span> une fois sur deux il oublie les livres que je lui ai demandés, ou il
+                      prétend qu'ils ne sont pas arrivés.<span class="tei-gap"> [...] </span></p>
+                </div>
+                <div class="tei-sample">
+                   <div class="tei-sample-name">[Passage 2, p. 94]</div>
+                   <p class="tei-p">Louise <span class="tei-del">aurait voulu</span><span class="tei-add">voulait</span> que j'aère un peu. Ça
+                      sentait le renfermé. On respirait mal. Mais j'ai tout de suite prévenu son geste.
+                      À cause de la mouche. Enfin, je ne lui ai pas parlé de la mouche<span class="tei-del">, elle se serait moquée de moi</span>. Je lui ai dit qu'ici, le vent soufflait fort, surtout en soirée. Elle m'a regardé
+                      d'un air <span class="tei-del">moqueur</span><span class="tei-add">troublé</span>, en restant silencieuse.</p>
+                </div>
+                <div class="tei-sample">
+                   <div class="tei-sample-name">[Passage 3, p. 103]</div>
+                   <p class="tei-p">
+                      <span class="tei-said">- Est-ce que tu as abandonné... juste après mon
+                         départ?</span>
+                      <span class="tei-said">- Je n'ai pas abandonné, Léo. On m'a chassée. Expulsée de chez
+                         moi, du jour au lendemain. Il était <span class="tei-del">bien</span><span class="tei-add">le mieux</span> placé pour <span class="tei-del">tout</span> comprendre. Pendant toutes ces années, il ne s'était douté de rien. Il me prenait
+                         pour une femme étrange, un peu folle peut-être, mais il s'en était fait une
+                         raison. Il me tolérait. Tout le monde me tolérait. Sa famille, ses enfant.
+                         <i>Nos</i> enfants. Mais là, c'était trop pour lui. Il ne pouvait pas avaler l'affront.</span>
+                      </p>
+                   <p class="tei-p">Elle se lève, ouvre des tiroirs, remue les affaire posée sur la table,
+                      s'accroche à un meuble, elle voudrait une cigarette, elle a
+                      tellement envie de fumer, je luis dis qu'elle n'en trouvera pas, elle ferait mieux
+                      de penser à autre chose. Elle me fixe du regard, hausse les sourcils, se gratte la
+                      joue droite, avec l'index. Un beau doigt long, effilé. Mais elle se ronge toujours
+                      autant les ongles, jusqu'au sang.</p>
+                </div>
+                <div class="tei-sample">
+                   <div class="tei-sample-name">[Passage 4, p. 107]</div>
+                   <p class="tei-p"><span class="tei-gap"> [...] </span>La direction n'y trouvera rien à
+                      redire. J'apporterai des doubles portions, qu'il a encore crié depuis
+                      sont petit bateau, avec un grand sourire. Je lui ai fait de grands signes amicaux
+                      avec les bras tandis qu'il s'éloignait, en me disant que je
+                      donnerais le surplus de nourriture aux poissons. Je n'ai jamais aimé avoir des armoires
+                      qui se remplissent trop.</p>
+                </div>
+             </div> <!-- end of tei -->
+            </div> <!-- end col-->
+            
+          </div> <!-- end row A-3-e-18 -->     
+
+
+         </div> <!-- end container -->
+      </section>
+    </main>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS, than DataTables -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    
+    <script>
+            $(document).ready(function () {
+                $('#example').DataTable({
+                    searching: false, paging: false, info: false
+                });
+                $('#A-13-a').DataTable({
+                    searching: false, paging: false, info: false
+                });
+                $('#A-6-25').DataTable({
+                    searching: false, paging: false, info: false
+                });
+            });</script>
+
+    <script>
+      // Get the button
+      let mybutton = document.getElementById("myBtn");      
+      // When the user scrolls down 600px from the top of the document, show the button
+      window.onscroll = function() {scrollFunction()};      
+      function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+          mybutton.style.display = "block";
+        } else {
+          mybutton.style.display = "none";
+        }
+      }      
+      // When the user clicks on the button, scroll to the top of the document
+      function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+      }
+    </script>
+
+  </body>
+</html>
+
+
+<!--
+            <div class="backToTop">
+              <a href="#toc">
+                Back to top
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+                </svg>
+              </a>
+            </div>
+          -->

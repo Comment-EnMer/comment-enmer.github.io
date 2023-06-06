@@ -1,0 +1,867 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous">
+    <!-- Datatables css -->
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet"
+      href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+    <!-- Custom styles -->
+    <link href="css/more.css" rel="stylesheet">
+    <title>En mer Prototype</title>
+  </head>
+  <body>
+
+    <div class="backToTop" onclick="topFunction()" id="myBtn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+      </svg>
+    </div>
+    
+    <header>
+      <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-md-7 py-4">
+              <h4 class="text-white">How to cite</h4>
+              <p class="text-muted">Elena Spadini (ed.), <i>Bernard Comment, "En mer". A scholarly edition prototype</i>, 2023. DOI: </p>
+            </div>
+            <div class="col-sm-4 offset-md-1 py-4" style="font-size: small;">
+              <h4 class="text-white">Contact</h4>
+              <ul class="list-unstyled">
+                <li><a href="#" class="text-white">elena.spadini@unibas.ch</a></li>
+              </ul>
+              <h4 class="text-white">Data</h4>
+              <ul class="list-unstyled">
+                <li class="text-white"><a href="#" class="text-white">Github</a> | <a href="#" class="text-white">Zenodo</a>
+                  <br/>
+                  Documents from the <a href="https://www.nb.admin.ch/snl/en/home/about-us/sla.html">Swiss Literary Archives</a>.</li>
+              </ul>
+              <h4 class="text-white">Licence</h4>
+              <ul class="list-unstyled text-white">
+                <li>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-c-circle" viewBox="0 0 16 16">
+                    <path d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8Zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM8.146 4.992c-1.212 0-1.927.92-1.927 2.502v1.06c0 1.571.703 2.462 1.927 2.462.979 0 1.641-.586 1.729-1.418h1.295v.093c-.1 1.448-1.354 2.467-3.03 2.467-2.091 0-3.269-1.336-3.269-3.603V7.482c0-2.261 1.201-3.638 3.27-3.638 1.681 0 2.935 1.054 3.029 2.572v.088H9.875c-.088-.879-.768-1.512-1.729-1.512Z"/>
+                  </svg> (All rights reserved) Bernard Comment: texts and facsimiles. 
+                  <br/>
+                  <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a> Elena Spadini: introduction and witnesses description.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="container d-flex justify-content-between">
+          <a href="index.html" class="navbar-brand d-flex align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+              class="bi bi-water" viewBox="0 0 16 16">
+              <path
+                d="M.036 3.314a.5.5 0 0 1 .65-.278l1.757.703a1.5 1.5 0 0 0 1.114 0l1.014-.406a2.5 2.5 0 0 1 1.857 0l1.015.406a1.5 1.5 0 0 0 1.114 0l1.014-.406a2.5 2.5 0 0 1 1.857 0l1.015.406a1.5 1.5 0 0 0 1.114 0l1.757-.703a.5.5 0 1 1 .372.928l-1.758.703a2.5 2.5 0 0 1-1.857 0l-1.014-.406a1.5 1.5 0 0 0-1.114 0l-1.015.406a2.5 2.5 0 0 1-1.857 0l-1.014-.406a1.5 1.5 0 0 0-1.114 0l-1.015.406a2.5 2.5 0 0 1-1.857 0L.314 3.964a.5.5 0 0 1-.278-.65zm0 3a.5.5 0 0 1 .65-.278l1.757.703a1.5 1.5 0 0 0 1.114 0l1.014-.406a2.5 2.5 0 0 1 1.857 0l1.015.406a1.5 1.5 0 0 0 1.114 0l1.014-.406a2.5 2.5 0 0 1 1.857 0l1.015.406a1.5 1.5 0 0 0 1.114 0l1.757-.703a.5.5 0 1 1 .372.928l-1.758.703a2.5 2.5 0 0 1-1.857 0l-1.014-.406a1.5 1.5 0 0 0-1.114 0l-1.015.406a2.5 2.5 0 0 1-1.857 0l-1.014-.406a1.5 1.5 0 0 0-1.114 0l-1.015.406a2.5 2.5 0 0 1-1.857 0L.314 6.964a.5.5 0 0 1-.278-.65zm0 3a.5.5 0 0 1 .65-.278l1.757.703a1.5 1.5 0 0 0 1.114 0l1.014-.406a2.5 2.5 0 0 1 1.857 0l1.015.406a1.5 1.5 0 0 0 1.114 0l1.014-.406a2.5 2.5 0 0 1 1.857 0l1.015.406a1.5 1.5 0 0 0 1.114 0l1.757-.703a.5.5 0 1 1 .372.928l-1.758.703a2.5 2.5 0 0 1-1.857 0l-1.014-.406a1.5 1.5 0 0 0-1.114 0l-1.015.406a2.5 2.5 0 0 1-1.857 0l-1.014-.406a1.5 1.5 0 0 0-1.114 0l-1.015.406a2.5 2.5 0 0 1-1.857 0L.314 9.964a.5.5 0 0 1-.278-.65zm0 3a.5.5 0 0 1 .65-.278l1.757.703a1.5 1.5 0 0 0 1.114 0l1.014-.406a2.5 2.5 0 0 1 1.857 0l1.015.406a1.5 1.5 0 0 0 1.114 0l1.014-.406a2.5 2.5 0 0 1 1.857 0l1.015.406a1.5 1.5 0 0 0 1.114 0l1.757-.703a.5.5 0 1 1 .372.928l-1.758.703a2.5 2.5 0 0 1-1.857 0l-1.014-.406a1.5 1.5 0 0 0-1.114 0l-1.015.406a2.5 2.5 0 0 1-1.857 0l-1.014-.406a1.5 1.5 0 0 0-1.114 0l-1.015.406a2.5 2.5 0 0 1-1.857 0l-1.757-.703a.5.5 0 0 1-.278-.65z"
+              />
+            </svg>
+            <strong>&nbsp;&nbsp;En mer</strong>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+    <main>
+      <!--d9f2b2-->
+      <section style="margin-bottom: 0px;background-color: #dae5d0;" class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading">Bernard Comment, “En mer”</h1>
+          <p class="lead text-muted">A scholarly edition prototype, including <span
+              style="font-weight: bold;">born-digital</span> and <span style="font-weight: bold;"
+              >paper</span> genetic materials</p>
+        </div>
+      </section>
+      <section>
+        <div class="container">
+          
+          <div class="row pt-5 px-5"> <!-- row for title and intro -->
+            <div class="col-md-auto">
+              <h1 class="internal-h1">Genetic witnesses</h1>
+              <p>The short story "En mer" was first conceived for the radio in 1998. The following year, it has been published in <i>La Nouvelle Revue Française</i>. During the first decade of the 2000s, the story has been included in a project for a collection of short stories, which leads to the publication of <i>Tout passe</i> in 2011 (winner of the Prix Goncourt de la Nouvelle). An unfinished project, probably pursued during the years 2006-2009, envisaged the extension of "En mer" into a novel.
+              <br/><b>All the known genetic witnesses of "En mer" are listed below</b>. They are preserved at the <a href="https://www.nb.admin.ch/snl/en/home/about-us/sla.html">Swiss Literary Archives</a> (SLA) / Archives littéraires suisse (ALS). The short story has been translated into Italian by Sandra Teroni, but the translation witnesses are not included here.</p>
+            </div>
+          </div>
+
+          <div class="row pt-5 justify-content-md-center"> <!-- row for TOC -->
+            <div class="col-md-auto">
+                <h2>Table of contents</h2>
+                <ul style="list-style: none;">
+                  <li>
+                    <a href="#list">List of publications and witnesses</a>
+                    <ul>
+                      <li><a href="#pubs">Publications</a></li>
+                      <li><a href="#witsPaper">Paper witnesses</a></li>
+                      <li><a href="#witsDigital">Digital witnesses</a></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#graph">Graph of the publications and witnesses relations</a>
+                  </li>
+                  <li>
+                    <a href="#data">Data and ontology</a>
+                  </li>
+                </ul>
+            </div>
+          </div> <!-- end TOC row -->
+          
+          <div class="row py-5 px-5" id="list">            
+            <h2>List of publications and witnesses</h2>
+
+           
+            <!-- PUBLICATIONS -->
+            <div class="pt-3" id="pubs">
+              <h3>Publications</h3>
+              <div>
+                <ul style="list-style: none;">
+                  <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-broadcast" viewBox="0 0 16 16" style="background-color: #e7f4da;">
+                      <path d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707zm2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 1 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708zm5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708zm2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707zM10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/>
+                    </svg>
+                    &nbsp;« En mer », diffusion radio sur Espace 2, régie J.-M. Meyer, 1998</li>
+                  <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-journal" viewBox="0 0 16 16" style="background-color: #e7f4da;">
+                      <path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/>
+                      <path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/>
+                    </svg>
+                    &nbsp;« En mer », <i>La Nouvelle Revue Française</i>, Juin 1999 (n°
+                    550), pp. 119-140</li>
+                  <li>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-book" viewBox="0 0 16 16" style="background-color: #e7f4da;">
+                      <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
+                    </svg>
+                    &nbsp;« En mer », dans <i>Tout passe</i>, Paris, éd. Christian Bourgois, 2011</li>
+                </ul>
+              </div>
+            </div> <!-- end of list of publications-->
+            
+            
+            <!-- PAPER WITNESSES -->
+            <div class="pt-3" id="witsPaper">
+              <h3>Paper witnesses</h3>
+              <div>
+                <p>The paper archive of Bernard Comment has been catalogued by the SLA. Each dossier corresponds to a project and/or a publication.<br/>
+                The dossiers are listed here. The relevant documents in each dossier are described in the tables below. The information marked with <i>'SLA'</i> are taken from the SLA catalogue.
+                  <ul>
+                    <li>Radio version, 1998 (<a href="#radioVersion">A-13-a</a>)</li>
+                    <li>NRF version, 1999 (<a href="#nrfVersion">A-6-25</a>)</li>
+                    <li>Project for a collection of short stories, 1993-2000 (<a href="#projectCollection">A-15-e</a>)</li>
+                    <li>Notebook, 2006-2009 (<a href="#notebook">A-12-a-21bis</a>)</li>
+                    <li>Project of a novel, 2006-2007 (<a href="#projectNovel">A-15-f</a>)</li>
+                    <li>Short stories collection <i>Tout passe</i>, 2011 (<a href="#toutPasse">A-3-e</a>)</li>
+                  </ul>
+                </p>
+
+                <!-- RADIO VERSION -->
+                <div class="py-3" id="radioVersion">
+                  <p><b>Radio version, 1998 (A-13-a). <a href="https://www.helveticarchives.ch/detail.aspx?id=796093">Link to SLA</a></b></p>
+                  
+                  <table id="A-13-a" class="table table-striped" style="width:100%">
+                    <thead>
+                      <tr>
+                         <th>Archive and shelfmark</th>
+                         <th>Title <i>[SLA]</i></th>
+                         <th>Date</th>
+                         <th>Content</th>
+                         <th>Physical description</th>
+                         <th>SLA entry</th>
+                         <th>Read</th>
+                      </tr>
+                   </thead>
+                   <tbody>
+                      <tr>
+                         <td>SLA/ALS-Comment A-13-a-01</td>
+                         <td>Comment, Bernard :&laquo; En mer &raquo;. Manuscrit</td>
+                         <td>1998<br><i>Datation SLA: </i>Dat&eacute; par l'auteur sur la chemise
+                                                             contenant ce document : &laquo; [...] &eacute;t&eacute; 1998 &raquo;.
+                         </td>
+                         <td><i>Incipit:</i> -Dix ans ? Alors, tu es tout de suite venu t'installer ici
+                                                             ?<br><i>Explicit:</i> et pendant toutes ces ann&eacute;es, je ne leur avais pas cout&eacute;
+                                                             cher.<br><i>Note: </i>The son character, who would have been ten years old,
+                                                             is already present. The first part of the text, until p. 9, is not
+                                                             divided into sections. Some reading indications in parenthesis,
+                                                             like '(Un temps)'.
+                         </td>
+                         <td><i>Support: </i>Paper sheets.<br><i>Collation SLA: </i>24 ff. aut. num. aut.<br><i>Hands: </i>Two pens with blue ink are used, the second starting on p. 20.<br><i>Annotations: </i>Only some, with the same pen.
+                         </td>
+                         <td><a target="_blank" href="https://www.helveticarchives.ch/detail.aspx?ID=796094">Link to SLA</a></td>
+                         <td><a href="transcriptions.html#A-13-a-01_transcr">
+                               <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-file-text" viewBox="0 0 18 18">
+                                  <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"></path>
+                                  <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"></path>
+                               </svg></a></td>
+                      </tr>
+                      <tr>
+                         <td>SLA/ALS-Comment A-13-a-02</td>
+                         <td>&laquo; En mer &raquo;. [Version I]. Tapuscrit</td>
+                         <td>1998<br><i>Datation SLA: </i>Dat&eacute; par l'auteur sur la chemise
+                                                             contenant ce document : &laquo; [...] &eacute;t&eacute; 1998 &raquo;.
+                         </td>
+                         <td><i>Incipit:</i> - Tu es tout de suite venu t'installer ici ?<br><i>Explicit:</i> et pendant toutes ces ann&eacute;es, je ne leur avais pas cout&eacute;
+                                                             cher. De toute fa&ccedil;on, elle mange peu. Tr&egrave;s peu.
+                         </td>
+                         <td><i>Support: </i>Paper sheets.<br><i>Collation SLA: </i>19 ff. dact. num. aut. avec corr. et ajouts aut.<br><i>Typescript: </i>Computer printout.<br><i>Annotations: </i>With pen and with pencil.
+                         </td>
+                         <td><a target="_blank" href="https://www.helveticarchives.ch/detail.aspx?ID=796096">Link to SLA</a></td>
+                         <td></td>
+                      </tr>
+                      <tr>
+                         <td>SLA/ALS-Comment A-13-a-03</td>
+                         <td>&laquo; En mer &raquo;. [Version II]. Tapuscrit</td>
+                         <td>1998<br><i>Datation SLA: </i>Dat&eacute; par l'auteur sur la chemise
+                                                             contenant ce document : &laquo; [...] &eacute;t&eacute; 1998 &raquo;.
+                         </td>
+                         <td><i>Incipit:</i> - Qu'est-ce que tu es venue faire ici ?<br><i>Explicit:</i> Ce matin, j&#8217;ai &eacute;cout&eacute; la radio, pour la premi&egrave;re fois depuis
+                                                             longtemps. Il n&#8217;ont rien dit de la Suisse, ni d&#8217;xxxxxx menace,
+                                                             nulle part. Le beau temps se maintiendra jusqu&#8217;&agrave;
+                                                             dimanche.
+                         </td>
+                         <td><i>Support: </i>Paper sheets.<br><i>Collation SLA: </i>22 ff. dact. num. avec corr. et ajouts aut.<br><i>Typescript: </i>Computer printout.<br><i>Annotations: </i>Many, with pen and with pencil.
+                         </td>
+                         <td><a target="_blank" href="https://www.helveticarchives.ch/detail.aspx?ID=796098">Link to SLA</a></td>
+                         <td></td>
+                      </tr>
+                      <tr>
+                         <td>SLA/ALS-Comment A-13-a-04</td>
+                         <td>Comment, Bernard :&laquo; En mer &raquo;. [Version III].
+                                                             Tapuscrit
+                         </td>
+                         <td>1998<br><i>Datation SLA: </i>Dat&eacute; par l'auteur sur la chemise
+                                                             contenant ce document : &laquo; [...] &eacute;t&eacute; 1998 &raquo;.
+                         </td>
+                         <td><i>Incipit:</i> - Tu m'en veux ?<br><i>Explicit:</i> [The contrary to the previous version: add Paolo who comes
+                                                             back after he listens to the radio + Leopardi's quote] [...] je ne
+                                                             leur avais pas cout&eacute; cher. De toute fa&ccedil;on, elle mange peu. Tr&egrave;s
+                                                             peu.
+                         </td>
+                         <td><i>Support: </i>Paper sheets.<br><i>Collation SLA: </i>22 ff.( 21 dact. num. avec corr. et ajouts aut., 1 f. aut.
+                                                          interpol&eacute;)<br><i>Typescript: </i>Computer printout.<br><i>Annotations: </i>Many, with pen and with pencil.
+                         </td>
+                         <td><a target="_blank" href="https://www.helveticarchives.ch/detail.aspx?ID=796099">Link to SLA</a></td>
+                         <td><a href="transcriptions.html#A-13-a-04_transcr">
+                               <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-file-text" viewBox="0 0 18 18">
+                                  <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"></path>
+                                  <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"></path>
+                               </svg></a></td>
+                      </tr>
+                      <tr>
+                         <td>SLA/ALS-Comment A-13-a-05</td>
+                         <td>&laquo; En mer &raquo;. [Version IV]. Tapuscrit.</td>
+                         <td>1998-08<br><i>Datation SLA: </i>Dat&eacute; par l'auteur en p. 1 : &laquo;
+                                                             [...] fin ao&ucirc;t 1998 &raquo;.
+                         </td>
+                         <td><i>Incipit:</i> - Tu m'en veux ?<br><i>Explicit:</i> [Same as A-13-a-04]<br><i>Note SLA: </i>Note aut. en p. 1 : &laquo; corrections fin ao&ucirc;t 98 / pour
+                                                             version d&eacute;finitive Espace 2 &raquo;.
+                         </td>
+                         <td><i>Support: </i>Paper sheets.<br><i>Collation SLA: </i>26 dact. num. (2 - 27) avec corr. et ajouts aut.<br><i>Typescript: </i>Computer printout.<br><i>Annotations: </i>Many, with pen and with pencil.
+                         </td>
+                         <td><a target="_blank" href="https://www.helveticarchives.ch/detail.aspx?ID=796100">Link to SLA</a></td>
+                         <td></td>
+                      </tr>
+                      <tr>
+                         <td>SLA/ALS-Comment A-13-a-06</td>
+                         <td>&laquo; En mer &raquo;. [Version V]. Tapuscrit</td>
+                         <td>1998</td>
+                         <td><i>Incipit:</i> - Tu m'en veux ?<br><i>Explicit:</i> Double, c'est peut-&ecirc;tre beaucoup (Un temps) De toute fa&ccedil;on,
+                                                             elle mange tellement peu.<br><i>Note: </i>Many reading indications in italic and
+                                                             parenthesis.
+                         </td>
+                         <td><i>Support: </i>Paper sheets.<br><i>Collation SLA: </i>24 ff. dact. num. (2 - 25) avec quelques corr. aut.<br><i>Typescript: </i>Computer printout.<br><i>Annotations: </i>Some, with pencil.
+                         </td>
+                         <td><a target="_blank" href="https://www.helveticarchives.ch/detail.aspx?ID=796109">Link to SLA</a></td>
+                         <td><a href="transcriptions.html#A-13-a-06_transcr">
+                               <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-file-text" viewBox="0 0 18 18">
+                                  <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"></path>
+                                  <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"></path>
+                               </svg></a></td>
+                      </tr>
+                      <tr>
+                         <td>SLA/ALS-Comment A-13-a-07</td>
+                         <td>[&laquo; En mer &raquo;]. Documents</td>
+                         <td>1998</td>
+                         <td><br><i>Note SLA: </i>Textes, plans, correspondance. 1 l. dact. s.
+                                                             d'Espace 2 (Schuin, Anik ; Gen&egrave;ve, 31.03.1988).<br><i>Note: </i>Documentation. Letter from the radio (RSR Espace 2)
+                                                             ordering the text for participating in a literary award
+                                                             competition. Notes for the text on various paper sheets: Leopardi's quotes, list of
+                                                             prisoners with graphic scheme of their position in cells, text
+                                                             passages.
+                         </td>
+                         <td><i>Support: </i>Paper sheets.<br><i>Collation SLA: </i>6 ff. aut.+ 1 l. dact. s.
+                         </td>
+                         <td><a target="_blank" href="https://www.helveticarchives.ch/detail.aspx?ID=796110">Link to SLA</a></td>
+                         <td><a href="transcriptions.html#A-13-a-07_transcr">
+                               <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-file-text" viewBox="0 0 18 18">
+                                  <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"></path>
+                                  <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"></path>
+                               </svg></a></td>
+                      </tr>
+                   </tbody>
+                </table>
+                </div> <!-- end radio version -->    
+                
+                <!-- NRF VERSION-->                
+                <div class="py-3" id="nrfVersion">
+                  <p><b>NRF version, 1999 (A-6-25). <a href="https://www.helveticarchives.ch/detail.aspx?ID=796114">Link to SLA</a></b></p>
+
+                  <table id="A-6-25" class="table table-striped" style="width:100%">
+                    <thead>
+                        <tr>
+                          <th>Archive and shelfmark</th>
+                          <th>Title <i>[SLA]</i></th>
+                          <th>Date</th>
+                          <th>Content</th>
+                          <th>Physical description</th>
+                          <th>SLA entry</th>
+                          <th>Read</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                          <td>SLA/ALS-Comment A-6-25-a</td>
+                          <td>&laquo; En mer &raquo;. [Version I]. Tapuscrit</td>
+                          <td>1999-01<br><i>Datation SLA: </i>09/01/1999 - 10/01/1999. Dat&eacute; par
+                                                              l'auteur en p. 2 : &laquo; [...] [9 - 10 janvier 1999] [...]&raquo;
+                          </td>
+                          <td><i>Incipit:</i> - Tu m'en veux ?<br><i>Explicit:</i> il a encore cri&eacute; depuis son petit bateau, avec un grand
+                                                              sourire. Doubles portions, c'est peut-&ecirc;tre beaucoup. De toute fa&ccedil;on
+                                                              elle mange tellement peu.<br><i>Note SLA: </i> Note aut. de l'auteur en p. 2 : &laquo; version corrig&eacute;e
+                                                              en janvier / 1999 pour publication / dans la NRF / sur
+                                                              sollicitation de Michel Braudeau / 1er jeu de corrections. / [9 -
+                                                              10 janvier 1999] &raquo;.<br><i>Note: </i>Shift from oral to written reception: all reading
+                                                              indications removed.
+                          </td>
+                          <td><i>Support: </i>Paper sheets.<br><i>Collation SLA: </i>25 ff. dact. num. (2 - 26) avec corr. et ajouts aut.<br><i>Typescript: </i>Computer printout.<br><i>Annotations: </i>With pen.
+                          </td>
+                          <td><a target="_blank" href="https://www.helveticarchives.ch/detail.aspx?ID=796115">Link to SLA</a></td>
+                          <td><a href="transcriptions.html#A-6-25-a_transcr">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-file-text" viewBox="0 0 18 18">
+                                    <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"></path>
+                                    <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"></path>
+                                </svg></a></td>
+                        </tr>
+                        <tr>
+                          <td>SLA/ALS-Comment A-6-25-b</td>
+                          <td>&laquo; En mer &raquo;. [Version II]. Tapuscrit</td>
+                          <td>1999-01-12<br><i>Datation SLA: </i>Dat&eacute; par l'auteur en p. 2 : &laquo;
+                                                              [...] [12 janvier 1999] &raquo;.
+                          </td>
+                          <td><i>Incipit:</i> [Citation de Ramuz] - Tu m'en veux ?<br><i>Explicit:</i> Doubles portions, c&#8217;est peut-&ecirc;tre beaucoup. Elle mange
+                                                              tellement peu. [note de bas de page sur le tunnel de
+                                                              Lucerne]<br><i>Note SLA: </i>Note aut. de l'auteur en p. 2 : &laquo; 2e jeu de
+                                                              corrections / pour NRF / 12 janvier 99 &raquo;.<br><i>Note: </i>Ramuz' quote added in the beginning, addition of
+                                                              footnote about Lucerne tunnel at the end.
+                          </td>
+                          <td><i>Support: </i>Paper sheets.<br><i>Collation SLA: </i>19 ff. dact. num (2 - 20) avec corr. aut. + 1 second ex.
+                                                            (1 second ex. du document sans corr.)<br><i>Typescript: </i>Computer printout.<br><i>Annotations: </i>Only some, with pen.
+                          </td>
+                          <td><a target="_blank" href="https://www.helveticarchives.ch/detail.aspx?ID=796118">Link to SLA</a></td>
+                          <td><a href="transcriptions.html#A-6-25-b_transcr">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-file-text" viewBox="0 0 18 18">
+                                    <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"></path>
+                                    <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"></path>
+                                </svg></a></td>
+                        </tr>
+                        <tr>
+                          <td>SLA/ALS-Comment A-6-25-c</td>
+                          <td>&laquo; En mer &raquo;. [Version III]. Tapuscrit</td>
+                          <td>1999-02-22</td>
+                          <td><i>Incipit:</i> [Same as previous version]<br><i>Explicit:</i> [Same as previous version]<br><i>Note SLA: </i>Note aut. de l'auteur en p. 2 : &laquo; corrections pour
+                                                              NRF / 22 f&eacute;vrier 99 &raquo; [wrongly transcribed '22 janvier' in the SLA
+                                                              catalogue].
+                          </td>
+                          <td><i>Support: </i>Paper sheets.<br><i>Collation SLA: </i>19 ff. dact. num (2 - 20) avec corr. aut.<br><i>Typescript: </i>Computer printout.<br><i>Annotations: </i>Only some, with pen.
+                          </td>
+                          <td><a target="_blank" href="https://www.helveticarchives.ch/detail.aspx?ID=796119">Link to SLA</a></td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td>SLA/ALS-Comment A-6-25-d</td>
+                          <td>&laquo; En mer &raquo;. [Version IV]. Tapuscrit</td>
+                          <td>1999-02-24<br><i>Datation SLA: </i>Dat&eacute; par l'auteur en p. 2 : &laquo;
+                                                              [...] 24 f&eacute;vrier 1999 &raquo;.
+                          </td>
+                          <td><i>Incipit:</i> [Same as previous version]<br><i>Explicit:</i> [Same as previous version]<br><i>Note SLA: </i>Note aut. de l'auteur en p. 2 : &laquo; Derni&egrave;re
+                                                              corrections / pour NRF / 24 f&eacute;vrier 1999 &raquo;.
+                          </td>
+                          <td><i>Support: </i>Paper sheets.<br><i>Collation SLA: </i>19 ff. dact. num (2 - 20) avec corr. aut.<br><i>Typescript: </i>Computer printout.<br><i>Annotations: </i>Only some, with pen, mostly strike through sentecens
+                                                            and words.
+                          </td>
+                          <td><a target="_blank" href="https://www.helveticarchives.ch/detail.aspx?ID=796120">Link to SLA</a></td>
+                          <td></td>
+                        </tr>
+                        <tr>
+                          <td>SLA/ALS-Comment A-6-25-e (and A-6-25-f, copy)</td>
+                          <td>&laquo; En mer &raquo;. &Eacute;preuves [I] et tapuscrit [V]</td>
+                          <td>1999-03-03</td>
+                          <td><i>Incipit:</i> [Same as previous version]<br><i>Explicit:</i> [Same as previous version, but without footnote about
+                                                              Lucerne tunnel which has been moved]<br><i>Note SLA: </i>Ces documents ne se trouvaient pas dans la chemise
+                                                              titr&eacute;e : &laquo; "En mer" / version NRF &raquo;, mais &eacute;taient conserv&eacute;s
+                                                              isol&eacute;ment ; de ce fait, ils sont catalog&eacute;s ensemble.<br><i>Note: </i>The note about Lucerne tunnel has been moved as a
+                                                              footnote at the end of section 2 (after "&ccedil;a fait trois jours et
+                                                              deux nuits que je ne dors pas" and before "III &#8211; L&#8217;abri, c&#8217;&eacute;tait &agrave;
+                                                              cause de quoi ?". The following document in the archive, A-6-25-f,
+                                                              is a copy of this one.
+                          </td>
+                          <td><i>Support: </i>Paper sheets.<br><i>Collation SLA: </i>1 jeu d'&eacute;preuves (22 ff. dact.) avec annotations allogr. :
+                                                            &laquo; Amiti&eacute;s. Bernard, &agrave; bient&ocirc;t / N. &raquo;. 1 ts. (18 ff. dact. num.).<br><i>Typescript: </i>Computer printout.<br><i>Annotations: </i>Only few.
+                          </td>
+                          <td><a target="_blank" href="https://www.helveticarchives.ch/detail.aspx?ID=1204502">Link to SLA</a></td>
+                          <td></td>
+                        </tr>
+                    </tbody>
+                   </table>
+                </div> <!-- end of nrf version-->
+
+                <!-- PROJECT COLLECTION -->
+                <div class="py-3" id="projectCollection">
+                  <p><b>Project for a collection of short stories, 1993-2000 (A-15-e). <a href="https://www.helveticarchives.ch/detail.aspx?id=1008355">Link to SLA</a></b></p>
+                  
+                  <table id="A-15-e" class="table table-striped" style="width:100%">
+                    <thead>
+                      <tr>
+                         <th>Archive and shelfmark</th>
+                         <th>Title <i>[SLA]</i></th>
+                         <th>Date</th>
+                         <th>Content</th>
+                         <th>Physical description</th>
+                         <th>SLA entry</th>
+                         <th>Read</th>
+                      </tr>
+                   </thead>
+                   <tbody>
+                      <tr>
+                         <td>SLA/ALS-Comment A-15-e-01</td>
+                         <td>&laquo; Hors-piste / projet de recueil de textes &raquo;. Table
+                                                             des mati&egrave;res
+                         </td>
+                         <td><br><i>Datation SLA: </i>s.d.
+                         </td>
+                         <td><br><i>Note: </i>The project of a collection of short novels is
+                                                             documented already in A-15-c ("Com&eacute;die pour un temps", 1993-1995)
+                                                             and A-15-d ("Hors-jeux / nouvelles", 1993-2000). The table of
+                                                             contents in this document includes "&laquo; En mer &raquo;, in Nouvelle Revue
+                                                             Fran&ccedil;aise, juin 1999"
+                         </td>
+                         <td><i>Support: </i>paper sheet.<br><i>Collation SLA: </i>1 f. dact. avec ajouts aut.<br><i>Typescript: </i>Computer printout.<br><i>Annotations: </i>With blue pen.
+                         </td>
+                         <td><a target="_blank" href="https://www.helveticarchives.ch/detail.aspx?ID=1008360">Link to SLA</a></td>
+                         <td><a href="transcriptions.html#A-15-e-01_transcr">
+                               <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-file-text" viewBox="0 0 18 18">
+                                  <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"></path>
+                                  <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"></path>
+                               </svg></a></td>
+                      </tr>
+                   </tbody>
+                </table>
+                </div> <!-- end of project collection -->
+
+                <!-- NOTEBOOK -->
+                <div class="py-3" id="notebook">
+                  <p><b>Notebook, 2006-2009 (A-12-a-21bis). <a href="https://www.helveticarchives.ch/detail.aspx?id=1734807">Link to SLA</a></b></p>
+                  
+                  <table id="A-15-e" class="table table-striped" style="width:100%">
+                    <thead>
+                      <tr>
+                         <th>Archive and shelfmark</th>
+                         <th>Title <i>[SLA]</i></th>
+                         <th>Date</th>
+                         <th>Content</th>
+                         <th>Physical description</th>
+                         <th>SLA entry</th>
+                         <th>Read</th>
+                      </tr>
+                   </thead>
+                   <tbody>
+                      <tr>
+                         <td>SLA/ALS-Comment A-12-a-21bis</td>
+                         <td>[Carnet 2003-2009]</td>
+                         <td>2003<br><i>Datation SLA: </i>approx. 08/03/2003 - approx.
+                                                          20/07/2009
+                         </td>
+                         <td><br><i>Note SLA: </i>Texte, notes, coupures de presse ou textes contecoll&eacute;s.
+                                                          On distingue les titres suivants : &laquo; Daniel Arasse 15 mars 2003 &raquo;, &laquo;
+                                                          Chronique du 12 juin 2003 &raquo;, &laquo; Conf&eacute;rence &agrave; Jussieu &raquo;, &laquo; Carlos
+                                                          Drummont de Andrade &raquo;, &laquo; En mer &raquo;, &laquo; Roman [Suisse] &raquo;, &laquo; Roman &raquo;, &laquo; EN
+                                                          MER (ou TRANSIT)&raquo;, &laquo; D&eacute;but du roman &raquo;, &laquo; Id&eacute;e du 20 juillet 09 &raquo;,
+                                                          &laquo;El&eacute;ments pour le tourbillon de la nuit d'h&ocirc;tel - Roman &raquo;, &laquo; Lieux &raquo;,
+                                                          &laquo; LE TEMPS / variations &raquo;. Inclusion: Notes et fragments pour En
+                                                          mer.
+                         </td>
+                         <td><i>Support: </i>Notebook.<br><i>Collation SLA: </i>1 petit cahier noir avec &eacute;lastique, 12.5 x 8.5 cm, lign&eacute; ; 24
+                                                       feuillets autographes num&eacute;rotation. autographe partielle (2-4).
+                         </td>
+                         <td><a target="_blank" href="https://www.helveticarchives.ch/detail.aspx?ID=1734807">Link to SLA</a></td>
+                         <td></td>
+                      </tr>
+                   </tbody>
+                </table>
+                </div> <!-- end of notebook -->
+
+                <!-- PROJECT NOVEL -->
+                <div class="py-3" id="projectNovel">
+                  <p><b>Project of a novel, 2006-2007 (A-15-f). <a href="https://www.helveticarchives.ch/detail.aspx?id=1203791">Link to SLA</a></b></p>
+                  
+                  <table id="A-15-f" class="table table-striped" style="width:100%">
+                    <thead>
+                      <tr>
+                         <th>Archive and shelfmark</th>
+                         <th>Title <i>[SLA]</i></th>
+                         <th>Date</th>
+                         <th>Content</th>
+                         <th>Physical description</th>
+                         <th>SLA entry</th>
+                         <th>Read</th>
+                      </tr>
+                   </thead>
+                   <tbody>
+                      <tr>
+                         <td>SLA/ALS-Comment A-15-f-01</td>
+                         <td> Comment, Bernard : &laquo; En mer / Roman &raquo;.
+                                                             Tapuscrit
+                         </td>
+                         <td>2006<br><i>Datation SLA: </i>approx. 18/02/2006
+                         </td>
+                         <td><i>Incipit:</i> [Citation de Ramuz] - Tu m'en veux ?<br><i>Explicit:</i> Doubles portions, c'est peut-&ecirc;tre beaucoup. Elle mange
+                                                             tellement peu.<br><i>Note SLA: </i>2 ff. de nots aut. dont 1 titr&eacute; : &laquo; 18.II.2006 /
+                                                             D&eacute;but du roman ("En mer" ?) &raquo;.<br><i>Note: </i>Project of extension of "En mer" for a novel? This
+                                                             document contains a copy of the short story and notes ("18.II.2006") + documentation
+                                                             from newspapers and two printout of webpages (2006-2007).
+                         </td>
+                         <td><i>Support: </i>Paper sheets.<br><i>Collation SLA: </i>18 ff. dact. num. Aut. (2-18).<br><i>Typescript: </i>Computer printouts and newspaper cuts.<br><i>Annotations: </i>No.
+                         </td>
+                         <td><a target="_blank" href="https://www.helveticarchives.ch/detail.aspx?ID=1203791">Link to SLA</a></td>
+                         <td><a href="transcriptions.html#A-15-f-01_transcr">
+                               <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-file-text" viewBox="0 0 18 18">
+                                  <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"></path>
+                                  <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"></path>
+                               </svg></a></td>
+                      </tr>
+                   </tbody>
+                </table>
+                </div> <!-- end of project novel -->
+
+
+                <!-- TOUT PASSE -->
+                <div class="py-3" id="toutPasse">
+                  <p><b>Short stories collection <i>Tout passe</i>, 2011 (A-3-e). <a href="https://www.helveticarchives.ch/detail.aspx?id=1007232">Link to SLA</a></b></p>
+
+                  <table id="A-3-e" class="table table-striped" style="width:100%">
+                    <thead>
+                      <tr>
+                         <th>Archive and shelfmark</th>
+                         <th>Title <i>[SLA]</i></th>
+                         <th>Date</th>
+                         <th>Content</th>
+                         <th>Physical description</th>
+                         <th>SLA entry</th>
+                         <th>Read</th>
+                      </tr>
+                   </thead>
+                   <tbody>
+                      <tr>
+                         <td>SLA/ALS-Comment A-3-e-05</td>
+                         <td>&laquo; En mer &raquo;. Tapuscrit</td>
+                         <td><br><i>Datation SLA: </i>s.d.
+                         </td>
+                         <td><i>Incipit:</i> [Citation de Ramuz] - Tu m'en veux ?<br><i>Explicit:</i> Doubles portions, c&#8217;est peut-&ecirc;tre beaucoup. Elle mange
+                                                             tellement peu<br><i>Note: </i>No footnote about Lucerne tunnel.
+                         </td>
+                         <td><i>Support: </i>Paper sheets.<br><i>Collation SLA: </i>23 ff. dact. non num.<br><i>Typescript: </i>Computer printout.<br><i>Annotations: </i>No.
+                         </td>
+                         <td><a target="_blank" href="https://www.helveticarchives.ch/detail.aspx?ID=1007646">Link to SLA</a></td>
+                         <td></td>
+                      </tr>
+                      <tr>
+                         <td>SLA/ALS-Comment A-3-e-16</td>
+                         <td>&laquo; Tout passe. R&eacute;cits &raquo;. Tapuscrit
+                                                             [I]
+                         </td>
+                         <td><br><i>Datation SLA: </i>s.d.
+                         </td>
+                         <td><i>Incipit:</i> [Citation de Ramuz] De loin, je n&#8217;avais d&#8217;abord vu que la tache
+                                                             rouge [...].<br><i>Explicit:</i> Je n'ai jamais aim&eacute; avoir des armoires qui se remplissent trop. C'est [xxx]<br><i>Note SLA: </i>Texte et paratexte (p. de titre, exergue, table des mati&egrave;res)
+                         </td>
+                         <td><i>Support: </i>Paper sheets.<br><i>Collation SLA: </i>151 ff. dact. num. (2-151) avec nombr. corr. et ajouts aut. + 2 ff. non num. &agrave; la fin avec ajouts aut.
+                                                          Ajout aut. en p. de titre: &laquo; Flottement / Un fils / Hors-jeu / Fugue / Ne rien laisser / L'annonce
+                            / En mer / Corrections / Une panne &raquo;.<br><i>Typescript: </i>Computer printout.<br><i>Annotations: </i>Many, with pencil and different pens.
+                         </td>
+                         <td><a target="_blank" href="https://www.helveticarchives.ch/detail.aspx?ID=1007654">Link to SLA</a></td>
+                         <td><a href="transcriptions.html#A-3-e-16_transcr">
+                               <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-file-text" viewBox="0 0 18 18">
+                                  <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"></path>
+                                  <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"></path>
+                               </svg></a></td>
+                      </tr>
+                      <tr>
+                         <td>SLA/ALS-Comment A-3-e-17</td>
+                         <td>&laquo; Tout passe. R&eacute;cits &raquo;. Tapuscrit
+                                                             [II]
+                         </td>
+                         <td><br><i>Datation SLA: </i>s.d.
+                         </td>
+                         <td><i>Incipit:</i> [Citation de Ramuz] De loin, je n&#8217;avais d&#8217;abord vu que la tache
+                                                             rouge [...].<br><i>Explicit:</i> [Same as A-3-e-16, annotations integrated in the typescript]<br><i>Note SLA: </i>Texte et paratexte (p. de titre, exergue, table des mati&egrave;res)
+                         </td>
+                         <td><i>Support: </i>Paper sheets.<br><i>Collation SLA: </i>62 ff. r&deg;-v&deg; dact. num. (2-126) avec corr. aut.<br><i>Typescript: </i>Computer printout.<br><i>Annotations: </i>Only one.
+                         </td>
+                         <td><a target="_blank" href="https://www.helveticarchives.ch/detail.aspx?ID=1007447">Link to SLA</a></td>
+                         <td></td>
+                      </tr>
+                      <tr>
+                         <td>SLA/ALS-Comment A-3-e-18</td>
+                         <td>&laquo; Tout passe. R&eacute;cits &raquo;. Tapuscrit
+                                                             [III]
+                         </td>
+                         <td>2010-12<br><i>Datation SLA: </i>&laquo; Version corrig&eacute;e entre le / 10 et
+                                                             le 20 d&eacute;cembre 2010, / suite &agrave; la premi&egrave;re lecture / de Dominique
+                                                             Bourgois &raquo;
+                         </td>
+                         <td><i>Incipit:</i> De loin, je n&#8217;avais d&#8217;abord vu [...].<br><i>Explicit:</i> Je n'ai jamais aim&eacute; avoir des armoires qui se remplissent trop.<br><i>Note SLA: </i>Texte et paratexte (p. de titre, exergue, table des mati&egrave;res).
+                                                             Indication aut. en p. de titre : &laquo; Version corrig&eacute;e entre le / 10 et le 20 d&eacute;cembre 2010,
+                            / suite &agrave; la premi&egrave;re lecture / de Dominique Bourgois &raquo;.
+                         </td>
+                         <td><i>Support: </i>Paper sheets.<br><i>Collation SLA: </i>126 ff. dact. num. avec corr. aut.<br><i>Typescript: </i>Computer printout.<br><i>Annotations: </i>Many, with pencil and different pens.
+                         </td>
+                         <td><a target="_blank" href="https://www.helveticarchives.ch/detail.aspx?ID=1007237">Link to SLA</a></td>
+                         <td><a href="transcriptions.html#A-3-e-18_transcr">
+                               <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-file-text" viewBox="0 0 18 18">
+                                  <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"></path>
+                                  <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"></path>
+                               </svg></a></td>
+                      </tr>
+                      <tr>
+                         <td>SLA/ALS-Comment A-3-e-19</td>
+                         <td>&laquo; Tout passe. R&eacute;cits &raquo;. Tapuscrit
+                                                             [IV]
+                         </td>
+                         <td><br><i>Datation SLA: </i>s.d.
+                         </td>
+                         <td><br><i>Note SLA: </i>Texte et paratexte (p. de titre, exergue, table des mati&egrave;res)
+                         </td>
+                         <td><i>Support: </i>Paper sheets.<br><i>Collation SLA: </i>125 ff. num. avec rares corr. aut. &agrave; l'encre rouge et orange<br><i>Typescript: </i>Computer printout.<br><i>Annotations: </i>No.
+                         </td>
+                         <td><a target="_blank" href="https://www.helveticarchives.ch/detail.aspx?ID=1007239">Link to SLA</a></td>
+                         <td></td>
+                      </tr>
+                      <tr>
+                         <td>SLA/ALS-Comment A-3-e-20</td>
+                         <td>Comment, Bernard: &laquo; Tout passe. R&eacute;cits &raquo;. Tapuscrit
+                                                             [V]
+                         </td>
+                         <td><br><i>Datation SLA: </i>s.d.
+                         </td>
+                         <td><i>Incipit:</i> De loin, je n&#8217;avais d&#8217;abord vu [...].<br><i>Explicit:</i> Je n'ai jamais aim&eacute; avoir des armoires qui se remplissent trop.<br><i>Note SLA: </i>Texte et paratexte (p. de titre, exergue). Les corr. dact. ne sont peut-&ecirc;tre pas de l'auteur.<br><i>Note: </i>Computer printout with track changes (from author or editor) and manual annotations.
+                         </td>
+                         <td><i>Support: </i>Paper sheets.<br><i>Collation SLA: </i>60 ff. dact. num. (2-61) avec corr. dact. et aut.<br><i>Typescript: </i>Computer printout.<br><i>Annotations: </i>Some.
+                         </td>
+                         <td><a target="_blank" href="https://www.helveticarchives.ch/detail.aspx?ID=1007238">Link to SLA</a></td>
+                         <td><a href="transcriptions.html#A-3-e-20_transcr">
+                               <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-file-text" viewBox="0 0 18 18">
+                                  <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"></path>
+                                  <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"></path>
+                               </svg></a></td>
+                      </tr>
+                      <tr>
+                         <td>SLA/ALS-Comment A-3-e-21</td>
+                         <td>&laquo; Tout passe &raquo;. &Eacute;preuves</td>
+                         <td>2011-02-25<br><i>Datation SLA: </i>Datation automatique sur l'en-t&ecirc;te des ff. : &laquo; Vendredi, 25. f&eacute;vrier 2011 &raquo;.
+                         </td>
+                         <td><br><i>Note SLA: </i>Annotation aut. sur la 1&egrave;re page: "et le / DU M&Ecirc;ME AUTEUR?".
+                         </td>
+                         <td><i>Support: </i>Paper sheets.<br><i>Collation SLA: </i>144 ff. dact. num. avec corr. aut.<br><i>Typescript: </i>Computer printout.<br><i>Annotations: </i>Only one.
+                         </td>
+                         <td><a target="_blank" href="https://www.helveticarchives.ch/detail.aspx?ID=1007236">Link to SLA</a></td>
+                         <td></td>
+                      </tr>
+                   </tbody>
+                </table>
+
+                </div> <!-- end of tout passe -->
+
+              </div>
+            </div> <!-- end of list of paper witnesses-->
+            
+            
+            <!-- DIGITAL WITNESSES -->
+            <div class="pt-3" id="witsDigital">
+              <h3>Born-digital witnesses</h3>
+              <div>
+                <p>The hard drive on which the digital witnesses were stored was created for the
+                  delivery to the SLA by the author. The author retrieved it once the files were
+                  saved on the servers of the SLA.</p>
+                <p>The files metadata are retrieved by the archives using the software <a
+                    href="https://www.nationalarchives.gov.uk/information-management/manage-information/policy-process/digital-continuity/file-profiling-tool-droid/"
+                    target="_blank">Droid</a>.</p>
+                <p>Most of the paper witnesses, described above, are computer printouts. We can therefore assume that many more digital versions have existed.</p>
+                <table id="A-17-a" class="table table-striped" style="width:100%">
+                    <thead>
+                       <tr>
+                          <th>Archive and shelfmark</th>
+                          <th>Title</th>
+                          <th>Provenance</th>
+                          <th>Content</th>
+                          <th>Format</th>
+                          <th>SLA entry</th>
+                          <th>Read</th>
+                       </tr>
+                    </thead>
+                    <tbody>
+                       <tr>
+                          <td>
+                             SLA/ALS-Comment A-17-a<br><i>Digital location: </i>RECITS, projet de recueil, hors-piste/En mer, r&eacute;cit, version longue.DOC
+                          </td>
+                          <td>EN MER</td>
+                          <td><i>Metadata extracted with Droid by SLA: </i>Last modified 2005-04-10T01:00:44
+                          </td>
+                          <td><i>Incipit:</i> &#8212; Tu m'en veux?<br><i>Explicit:</i> (Un temps) De toute fa&ccedil;on, elle mange tellement peu.<br><i>Note: </i>It corresponds to the radio version.
+                          </td>
+                          <td>
+                             Computer file.
+                             <br>Microsoft Word Document 97-2003.<br>75264 bytes.
+                          </td>
+                          <td><a target="_blank" href="https://www.helveticarchives.ch/detail.aspx?ID=1332712">Link to SLA</a></td>
+                          <td><a href="transcriptions.html#A-17-a_transcr">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-file-text" viewBox="0 0 18 18">
+                                   <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"></path>
+                                   <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"></path>
+                                </svg></a></td>
+                       </tr>
+                       <tr>
+                          <td>
+                             SLA/ALS-Comment A-17-a<br><i>Digital location: </i>RECITS, projet de recueil, hors-piste/En mer, r&eacute;cit.DOC
+                          </td>
+                          <td>EN MER</td>
+                          <td><i>Metadata extracted with Droid by SLA: </i>Last modified 2005-04-10T01:00:44
+                          </td>
+                          <td><i>Incipit:</i> [Citation Ramuz] I &#8212; Tu m'en veux?<br><i>Explicit:</i> Doubles portions, c'est peut-&ecirc;tre beaucoup. Elle mange tellement peu.<br><i>Note: </i>Endnote about Lucerne tunnel placed at the end of section II (after "&ccedil;a fait trois jours et
+                                                           deux nuits que je ne dors pas" and before "III &#8211; L&#8217;abri, c&#8217;&eacute;tait &agrave;
+                                                           cause de quoi ?". It corresponds to the NRF version.
+                          </td>
+                          <td>
+                             Computer file.
+                             <br>Microsoft Word Document 97-2003.<br>68096 bytes.
+                          </td>
+                          <td><a target="_blank" href="https://www.helveticarchives.ch/detail.aspx?ID=1332712">Link to SLA</a></td>
+                          <td><a href="transcriptions.html#A-17-a_transcr">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-file-text" viewBox="0 0 18 18">
+                                   <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"></path>
+                                   <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"></path>
+                                </svg></a></td>
+                       </tr>
+                       <tr>
+                          <td>
+                             SLA/ALS-Comment A-17-a<br><i>Digital location: </i>BC LIVRES/TOUT PASSE/TOUT PASSE.docx
+                          </td>
+                          <td>Tout passe</td>
+                          <td><i>Metadata extracted with Droid by SLA: </i>Last modified 2011-01-31T09:27:44
+                          </td>
+                          <td><i>Incipit:</i> De loin, je n&#8217;avais d&#8217;abord vu que la tache rouge d&#8217;un coupe-vent de
+                                                           nylon.<br><i>Explicit:</i> Je n&#8217;ai
+                                                           jamais aim&eacute; avoir des armoires qui se remplissent trop.<br><i>Note: </i>Final version or proofs, it includes the editor name and the layout.
+                          </td>
+                          <td>
+                             Computer file.
+                             <br>Microsoft Word for Windows 2007 onwards.<br>164471 bytes.
+                          </td>
+                          <td><a target="_blank" href="https://www.helveticarchives.ch/detail.aspx?ID=1332712">Link to SLA</a></td>
+                          <td><a href="transcriptions.html#A-17-a_transcr">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="23" height="23" fill="currentColor" class="bi bi-file-text" viewBox="0 0 18 18">
+                                   <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"></path>
+                                   <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"></path>
+                                </svg></a></td>
+                       </tr>
+                    </tbody>
+                 </table>
+              </div>
+              
+            </div> <!-- end of list of digital witnesses -->
+          
+          </div> <!-- end list -->
+          
+          
+          <div class="row pt-5 px-5 justify-content-md-center" id="graph">
+            <h2>Graph of the publications and witnesses relations</h2>
+            <div class="col-md-8">
+              <a class="noHover" href="images/enMer-witsRelations.png">
+                <img width="100%" style="border:1px solid black" src="images/enMer-witsRelations.png">
+              </a>
+            </div>
+          </div> <!-- end of graph -->
+          
+          
+          <div class="row pt-5 px-5" id="data">
+            <h2>Data and ontology</h2>
+            <p>The description of the witnesses is available in XML/TEI in the <a href="#">Github repo</a>.
+              <br/>The relations between the publications and the witnesses are represented according to the <a href="#">GENO</a> ontology. The RDF data is also available in the <a href="#">Github repo</a>.</p>
+          </div> <!-- end of data -->
+
+          <div class="row pt-5 px-5"></div> <!-- end of empty row -->
+            
+         </div>
+      </section>
+    </main>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS, than DataTables -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    
+    <script>
+            $(document).ready(function () {
+                $('#example').DataTable({
+                    searching: false, paging: false, info: false
+                });
+                $('#A-13-a').DataTable({
+                    searching: false, paging: false, info: false
+                });
+                $('#A-6-25').DataTable({
+                    searching: false, paging: false, info: false
+                });
+                $('#A-3-e').DataTable({
+                    searching: false, paging: false, info: false
+                });
+
+                $('#A-17-a').DataTable({
+                    searching: false, paging: false, info: false, order: [[2, 'asc']]
+                });
+            });
+    </script>
+
+    <script>
+      // Get the button
+      let mybutton = document.getElementById("myBtn");      
+      // When the user scrolls down 600px from the top of the document, show the button
+      window.onscroll = function() {scrollFunction()};      
+      function scrollFunction() {
+        if (document.body.scrollTop > 600 || document.documentElement.scrollTop > 600) {
+          mybutton.style.display = "block";
+        } else {
+          mybutton.style.display = "none";
+        }
+      }      
+      // When the user clicks on the button, scroll to the top of the document
+      function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+      }
+      </script>
+  </body>
+</html>
