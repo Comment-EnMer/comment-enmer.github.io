@@ -45,7 +45,13 @@ table {
 
 .thumb {
     width: 100px;
+    border: none;
 }
+
+.witThumbnails > a {
+    text-decoration: none;
+}
+
 
 .backToTop {
     padding: 2em;
